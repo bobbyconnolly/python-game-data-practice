@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    
+    body {
+        font-family: system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+    }
+    pre {
+        background: #f6f8fa;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 5px 0;
+        font-family: monospace;
+        white-space: pre;
+        overflow-x: auto;
+    }
+    .data-structure {
+        background: #f6f8fa;
+        padding: 15px;
+        border-radius: 6px;
+        font-family: monospace;
+        white-space: pre;
+    }
+    .question {
+        margin: 20px 0;
+        padding: 15px;
+        background: #fff;
+        border-left: 4px solid #0969da;
+    }
+    .hint {
+        background: #fff4e5;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 10px 0;
+    }
+    .answer {
+        background: #dafbe1;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 10px 0;
+        font-family: monospace;
+    }
+    .note {
+        background: #d8e4fc;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 10px 0;
+    }
+    .answers-section {
+        margin-top: 40px;
+        border-top: 3px solid #0969da;
+        padding-top: 20px;
+    }
+    .answer-block {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 6px;
+        margin: 15px 0;
+    }
+    .answer-heading {
+        color: #0969da;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+    }
+    .code {
+        font-family: monospace;
+        background: #f6f8fa;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 5px 0;
+    }
+    @media (max-width: 600px) {
+        body {
+            padding: 10px;
+            background: white;
+        }
+      
+    }
+</style>
+</head>
+<body>
+    <h2>Video Game Character Inventory Practice</h2>
+    
+    <p>Practice accessing and modifying nested data structures using this game data:</p>
+    
+    <div class="data-structure">
+game_data = {
+    "player_stats": {
+        "health": 100,
+        "level": 5,
+        "experience": 2500,
+        "position": {"x": 120, "y": 450}
+    },
+    "inventory": {
+        "weapons": [
+            {
+                "id": "sword_01",
+                "name": "Steel Sword",
+                "damage": 25,
+                "durability": 100,
+                "upgrades": ["sharp", "durable"]
+            },
+            {
+                "id": "bow_02",
+                "name": "Wooden Bow",
+                "damage": 15,
+                "durability": 80,
+                "upgrades": []
+            }
+        ],
+        "potions": {
+            "health": 5,
+            "mana": 3,
+            "strength": 1
+        }
+    },
+    "quests": [
+        {
+            "id": "quest_001",
+            "title": "Defeat the Dragon",
+            "rewards": {
+                "gold": 1000,
+                "items": [
+                    "dragon_scale", 
+                    "magic_gem"
+                ]
+            },
+            "completed": False
+        }
+    ]
+}</div>
+
+    <div class="question">
+        <h3>Question 1: Data Access</h3>
+        <p>Write single Python expressions for each:</p>
+        <ol>
+            <li>Get the player's current experience points</li>
+            <li>Get the damage value of the first weapon</li>
+            <li>Get the number of health potions</li>
+        </ol>
+ 
+    </div>
+
+    <div class="question">
+        <h3>Question 2: Working with Copies</h3>
+        <p>Sometimes we want to experiment with data without risking changes to the original. Here's how to safely copy nested data:</p>
+        
+        <div class="note">
+            This is an advanced topic that won't be on the final exam, but it's good practice for real-world programming!
+        </div>
+
+ 
+        
+        <div class="hint">
+            Why deep copy?
+            <ul>
+                <li>Simple assignment (=) just creates a reference</li>
+                <li>list.copy() or dict.copy() only copies the first level</li>
+                <li>deepcopy() copies everything at all levels</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>Question 3: Dictionary Updates</h3>
+        <p>Write code to:</p>
+        <ol>
+            <li>Add a new "speed" potion with quantity 2</li>
+            <li>Add "magical" to the first weapon's upgrades</li>
+            <li>Change the player's position to x=150, y=500</li>
+        </ol>
+ 
+    </div>
+
+    <div class="question">
+        <h3>Question 4: Creating Lists from Data</h3>
+        <p>You can create lists either using loops or list comprehensions. Both approaches work!</p>
+
+        <p>For example, to get all weapon names:</p>
+        
+ 
+
+        <p>Try these exercises:</p>
+        <ol>
+            <li>Create a list of weapons with damage greater than 20</li>
+            <li>Create a list of potion types that have quantity greater than 2</li>
+        </ol>
+        
+ 
+    </div>
+
+    <div class="question">
+        <h3>Question 5: Safe Access</h3>
+        <p>Write code using .get() to safely access data that might not exist:</p>
+        <ol>
+            <li>Get the player's "magic" stat, returning 0 if it doesn't exist</li>
+            <li>Get the "bow_02" weapon's "enchantments" list, returning an empty list if it doesn't exist</li>
+        </ol>
+ 
+    </div>
+
+    <div class="answers-section">
+        <h2>Complete Answer Key</h2>
+        
+        <div class="answer-block">
+            <h3 class="answer-heading">Question 1: Data Access</h3>
+    <pre>
+# 1. Get player's experience
+game_data["player_stats"]["experience"]
+
+# 2. Get first weapon's damage
+game_data["inventory"]["weapons"][0]["damage"]
+
+# 3. Get number of health potions
+game_data["inventory"]["potions"]["health"]</pre>
+        </div>
+    
+        <div class="answer-block">
+            <h3 class="answer-heading">Question 2: Working with Copies</h3>
+    <pre>
+import copy
+
+# Create deep copy
+weapons_copy = copy.deepcopy(game_data["inventory"]["weapons"])
+
+# Modify copy
+weapons_copy[0]["damage"] = 30
+
+# Verify original (optional)
+print(game_data["inventory"]["weapons"][0]["damage"])  # Still 25</pre>
+        </div>
+    
+        <div class="answer-block">
+            <h3 class="answer-heading">Question 3: Dictionary Updates</h3>
+    <pre>
+# 1. Add new potion
+game_data["inventory"]["potions"]["speed"] = 2
+
+# 2. Add upgrade to first weapon
+game_data["inventory"]["weapons"][0]["upgrades"].append("magical")
+
+# 3. Update position
+game_data["player_stats"]["position"] = {"x": 150, "y": 500}</pre>
+        </div>
+    
+        <div class="answer-block">
+            <h3 class="answer-heading">Question 4: Creating Lists from Data</h3>
+            
+            <strong>Loop Approach:</strong>
+    <pre>
+# Weapons with damage > 20
+strong_weapons = []
+for weapon in game_data["inventory"]["weapons"]:
+    if weapon["damage"] > 20:
+        strong_weapons.append(weapon)
+
+# Potions with quantity > 2
+abundant_potions = []
+for potion, quantity in game_data["inventory"]["potions"].items():
+    if quantity > 2:
+        abundant_potions.append(potion)</pre>
+
+        <strong>Comprehension Approach:</strong>
+<pre>
+# Weapons with damage > 20
+strong_weapons = [w for w in game_data["inventory"]["weapons"] 
+                    if w["damage"] > 20]
+
+# Potions with quantity > 2
+abundant_potions = [p for p, q in game_data["inventory"]["potions"].items() 
+                    if q > 2]</pre>
+        </div>
+    
+        <div class="answer-block">
+            <h3 class="answer-heading">Question 5: Safe Access</h3>
+    <pre>
+# 1. Safe access to magic stat
+game_data["player_stats"].get("magic", 0)
+
+# 2. Safe access to enchantments
+game_data["inventory"]["weapons"][1].get("enchantments", [])</pre>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
